@@ -1,11 +1,10 @@
 /*
  * Ipiece.java
  *
- * última modificação: 08/05/2024
+ * última modificação: 09/05/2024
  *
  * Material utilizado para o Projeto Prático 01 [Tetris] aula de MC322 - Programação Orientada a Objetos
  */
-
 package pieces;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -24,17 +23,17 @@ public class Ipiece extends Piece{
     }
 
     @Override
+    public void spawn() {
+        this.setX(ThreadLocalRandom.current().nextInt(0, 10));
+        this.setY(0);
+    }
+
+    @Override
     public String toString() {
         StringBuilder out = new StringBuilder();
         for(int i=0; i<this.getForm().length;i++)
             for(int j=0; j<this.getForm()[i].length;j++)
                 out.append(((this.getForm()[i][j]>0) ? STR."\{Colors.ANSI_CYAN} \{Colors.ANSI_RESET}" : STR."\{Colors.ANSI_WHITE}  \{Colors.ANSI_RESET}").repeat(this.getForm()[i][j]));
         return out.toString();
-    }
-
-    @Override
-    public void spawn() {
-        this.setX(ThreadLocalRandom.current().nextInt(2, 8));
-        this.setY(0);
     }
 }

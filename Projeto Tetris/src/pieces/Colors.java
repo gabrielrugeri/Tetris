@@ -9,7 +9,7 @@
 package pieces;
 
 /**
- *  Esta classe contém a coloração para printar no terminal.
+ *  Esta classe contém a coloração para printar as peças no terminal.
  */
 public class Colors {
     public static final String ANSI_RESET = "\u001B[0m";
