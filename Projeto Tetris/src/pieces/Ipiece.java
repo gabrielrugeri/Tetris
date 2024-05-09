@@ -31,9 +31,11 @@ public class Ipiece extends Piece{
     @Override
     public String toString() {
         StringBuilder out = new StringBuilder();
-        for(int i=0; i<this.getForm().length;i++)
-            for(int j=0; j<this.getForm()[i].length;j++)
-                out.append(((this.getForm()[i][j]>0) ? STR."\{Colors.ANSI_CYAN} \{Colors.ANSI_RESET}" : STR."\{Colors.ANSI_WHITE}  \{Colors.ANSI_RESET}").repeat(this.getForm()[i][j]));
+        for(int i=0; i<this.getForm().length;i++) {
+            for (int j = 0; j < this.getForm()[i].length; j++)
+                out.append(((this.getForm()[i][j] > 0) ? STR."\{Colors.ANSI_CYAN} \{Colors.ANSI_RESET}" : STR."\{Colors.ANSI_WHITE}  \{Colors.ANSI_RESET}"));
+            out.append("\n");
+        }
         return out.toString();
     }
 }

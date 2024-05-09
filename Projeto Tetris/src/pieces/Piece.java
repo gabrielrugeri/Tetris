@@ -8,8 +8,6 @@
 
 package pieces;
 
-import java.util.Objects;
-
 /**
  *  Esta classe abstrata é o modelo para todas as peças do jogo;  contém assim os atributos e métodos para a implementação delas.
  */
