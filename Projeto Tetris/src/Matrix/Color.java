@@ -6,7 +6,7 @@
 * Material utilizado para o Projeto Prático 01 [Tetris] aula de MC322 - Programação Orientada a Objetos
 */
 
-package Colors;
+package Matrix;
 
 public enum Color {
     BLACK,

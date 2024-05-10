@@ -6,32 +6,20 @@
 * Material utilizado para o Projeto Prático 01 [Tetris] aula de MC322 - Programação Orientada a Objetos
 */
 
-package Pieces;
-import Colors.Color;
+package Matrix.Pieces;
+import java.util.concurrent.ThreadLocalRandom;
+import Matrix.Color;
+import Matrix.Matrix;
 
 /**
  *  Esta classe abstrata é o modelo para todas as peças do jogo;
  * Contém assim os atributos e métodos para a implementação delas.
  */
-public abstract class Piece {
-    private Color[][] form; // matriz representante da forma da peça.
-    private int height; // numero de linhas da matriz-peca.
-    private int width; // numero de colunas da matriz-peca.
-    private int x;  // posicao do elemento [0][0] da peca no tabuleiro.
-    private int y;  // posicao do elemento [0][0] da peca no tabuleiro.
-    private int rotation;  // marca se a peça sofre rotação.
+public abstract class Piece extends Matrix {
+    protected int x;  // posicao do elemento [0][0] da peca no tabuleiro.
+    protected int y;  // posicao do elemento [0][0] da peca no tabuleiro.
+    protected int rotation;  // marca se a peça sofre rotação.
 
-    public Color[][] getForm() {
-        return form;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public int getWidth() {
-        return width;
-    }
 
     public int getX() {
         return x;
@@ -65,9 +53,9 @@ public abstract class Piece {
         this.y = y;
     }
 
-        /**
-     * A função adiciona i na posição x da peça.
-     */
+    /**
+    * A função adiciona i na posição x da peça.
+    */
     public void addX(int i){
         x += i;
     }
@@ -100,22 +88,17 @@ public abstract class Piece {
     /**
      * A função é responsável por setar a peça no tabuleiro.
      */
+    @Override
     public abstract void spawn();
 
-    /**
-     * A função é responsável pela String de impressão a qual mostra a peça no tabuleiro.
+    /*
+     * CONSIDERAR A SEGUINTE IMPLEMENTACAO:
      */
-    @Override
-    public String toString() {
-        StringBuilder out = new StringBuilder();
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                out.append(form[i][j]);
-            }
-            out.append('\n');
-        }
-        return out.toString();
-    }
+    // public void spawn(int origin, int bound) {
+    //     x = ThreadLocalRandom.current().nextInt(origin, bound);
+    //     y = 0;
+    // }
+
 
     /**
      * A função rotaciona a peça para a esquerda.

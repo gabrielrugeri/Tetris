@@ -5,9 +5,9 @@
  *
  * Material utilizado para o Projeto Prático 01 [Tetris] aula de MC322 - Programação Orientada a Objetos
  */
-package Pieces;
+package Matrix.Pieces;
 import java.util.concurrent.ThreadLocalRandom;
-import Colors.Color;
+import Matrix.Color;
 
 /**
  *  Esta classe é referente à peça O. Contém seu construtor e métodos para a implementação.

@@ -5,20 +5,21 @@
  *
  * Material utilizado para o Projeto Prático 01 [Tetris] aula de MC322 - Programação Orientada a Objetos
  */
-package Pieces;
+package Matrix.Pieces;
 import java.util.concurrent.ThreadLocalRandom;
-import Colors.Color;
+import Matrix.Color;
+
 
 /**
- *  Esta classe é referente à peça S. Contém seu construtor e métodos para a implementação.
+ *  Esta classe é referente à peça T. Contém seu construtor e métodos para a implementação.
  */
-public class Spiece extends Piece{
+public class Tpiece extends Piece {
     // Construtor
-    public Spiece() {
+    public Tpiece() {
         super();
-        Color G = Color.GREEN;
+        Color P = Color.PINK;
         Color W = Color.WHITE;
-        Color[][] form = {{G, G, W}, {W, G, W}, {W, G, G}};
+        Color[][] form = {{P, P, P}, {W, P, W}};
         this.setForm(form);
         this.setRotation(0);
     }
