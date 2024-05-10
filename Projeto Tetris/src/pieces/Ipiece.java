@@ -5,20 +5,21 @@
  *
  * Material utilizado para o Projeto Prático 01 [Tetris] aula de MC322 - Programação Orientada a Objetos
  */
-package pieces;
-
+package Pieces;
 import java.util.concurrent.ThreadLocalRandom;
+import Colors.Color;
 
 /**
  *  Esta classe é referente à peça I. Contém seu construtor e métodos para a implementação.
  */
-public class Ipiece extends Piece{
+public class Ipiece extends Piece {
     // Construtor.
     public Ipiece() {
         super();
-        this.setColor(1);
-        int[][] form= {{1},{1},{1},{1}};
+        Color C = Color.CYAN;
+        Color[][] form = {{C}, {C}, {C}, {C}};
         this.setForm(form);
+        this.spawn();
         this.setRotation(0);
     }
 
@@ -26,16 +27,5 @@ public class Ipiece extends Piece{
     public void spawn() {
         this.setX(ThreadLocalRandom.current().nextInt(0, 10));
         this.setY(0);
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder out = new StringBuilder();
-        for(int i=0; i<this.getForm().length;i++) {
-            for (int j = 0; j < this.getForm()[i].length; j++)
-                out.append(((this.getForm()[i][j] > 0) ? STR."\{Colors.ANSI_CYAN} \{Colors.ANSI_RESET}" : STR."\{Colors.ANSI_WHITE}  \{Colors.ANSI_RESET}"));
-            out.append("\n");
-        }
-        return out.toString();
     }
 }
