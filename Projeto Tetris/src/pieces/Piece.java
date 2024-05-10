@@ -12,17 +12,20 @@ package pieces;
  *  Esta classe abstrata é o modelo para todas as peças do jogo;  contém assim os atributos e métodos para a implementação delas.
  */
 public abstract class Piece {
-    private int color;
+    private String color;
     private int[][] form; // matriz representante da forma da peça.
+    private int height;  // altura da matriz da peça.
+    private int width; // largura da matriz da peça.
     private int x;  // posição mais à esquerda superior da peça no tabuleiro.
     private int y;  // posição mais à esquerda superior da peça no tabuleiro.
     private int rotation;  // marca se a peça sofre rotação.
 
-    public int getColor() {
+
+    public String getColor() {
         return color;
     }
 
-    public void setColor(int color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
@@ -32,6 +35,22 @@ public abstract class Piece {
 
     public void setForm(int[][] form) {
         this.form = form;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
     }
 
     public int getX() {
@@ -58,51 +77,56 @@ public abstract class Piece {
         this.rotation = (this.rotation + rotation)%4;
     }
 
-    /**
-     * A função é responsável por setar a peça no tabuleiro.
-     */
-    public abstract void spawn();
+    // Construtor.
+    public Piece() {
+        this.y = 0;
+        this.rotation = 0;
+    }
 
     /**
      * A função é responsável pela String de impressão a qual mostra a peça no tabuleiro.
      */
     @Override
-    public abstract String toString();
+    public String toString() {
+        StringBuilder out = new StringBuilder();
+        for(int i=0; i<this.getForm().length;i++) {
+            for (int j = 0; j < this.getForm()[i].length; j++)
+                out.append(((this.getForm()[i][j] > 0) ? STR."\{this.getColor()}  \{Colours.ANSI_RESET}" : STR."\{Colours.ANSI_WHITE}  \{Colours.ANSI_RESET}"));
+            out.append("\n");
+        }
+        return out.toString();
+    }
 
     /**
      * A função rotaciona a peça para a esquerda.
-     *
-     *  @return rotatedForm int[][]
      */
-    public int[][] rotateClockWise(){
-        int windth = this.getForm().length;
-        int heigth = this.getForm()[0].length;
-        int[][] rotatedForm = new int[heigth][windth];
-        for (int i=0; i<heigth; i++) {
-            for (int j=0; j<windth; j++) {
-                rotatedForm[i][j] = this.getForm()[windth - j - 1][i];
+    public void rotateClockWise(){
+        int[][] rotatedForm = new int[this.getHeight()][this.getWidth()];
+        for (int i=0; i<this.getHeight(); i++) {
+            for (int j=0; j<this.getWidth(); j++) {
+                rotatedForm[i][j] = this.getForm()[this.getWidth() - j - 1][i];
             }
         }
         this.setRotation(1);
-        return rotatedForm;
+        this.setForm(rotatedForm);
+        this.setHeight(this.getForm()[0].length);
+        this.setWidth(this.getForm().length);
     }
 
     /**
      * A função rotaciona a peça para a direita.
-     *
-     * @return rotatedForm int[][]
      */
-    public int[][] rotateCounterClockWise(){
-        int windth = this.getForm().length;
-        int heigth = this.getForm()[0].length;
-        int[][] rotatedForm = new int[heigth][windth];
-        for (int i=0; i<heigth; i++) {
-            for (int j=0; j<windth; j++) {
-                rotatedForm[i][j] = this.getForm()[j][heigth - i - 1];
+    public void rotateCounterClockWise(){
+        int[][] rotatedForm = new int[this.getHeight()][this.getWidth()];
+        for (int i=0; i<this.getHeight(); i++) {
+            for (int j=0; j<this.getWidth(); j++) {
+                rotatedForm[i][j] = this.getForm()[j][this.getHeight() - i - 1];
             }
         }
         this.setRotation(-1);
-        return rotatedForm;
+        this.setForm(rotatedForm);
+        this.setHeight(this.getForm()[0].length);
+        this.setWidth(this.getForm().length);
     }
 
     /**
@@ -132,4 +156,9 @@ public abstract class Piece {
     public void addY(int i){
         this.setY(this.getY()+i);
     }
+
+    /**
+     * A função é responsável por setar a peça no tabuleiro.
+     */
+    public abstract void spawn();
 }

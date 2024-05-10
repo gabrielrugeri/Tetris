@@ -16,26 +16,15 @@ public class Ipiece extends Piece{
     // Construtor.
     public Ipiece() {
         super();
-        this.setColor(1);
+        this.setColor(Colours.ANSI_CYAN);
         int[][] form= {{1},{1},{1},{1}};
         this.setForm(form);
-        this.setRotation(0);
+        this.setWidth(this.getForm().length);
+        this.setHeight(this.getForm()[0].length);
     }
 
     @Override
     public void spawn() {
         this.setX(ThreadLocalRandom.current().nextInt(0, 10));
-        this.setY(0);
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder out = new StringBuilder();
-        for(int i=0; i<this.getForm().length;i++) {
-            for (int j = 0; j < this.getForm()[i].length; j++)
-                out.append(((this.getForm()[i][j] > 0) ? STR."\{Colors.ANSI_CYAN} \{Colors.ANSI_RESET}" : STR."\{Colors.ANSI_WHITE}  \{Colors.ANSI_RESET}"));
-            out.append("\n");
-        }
-        return out.toString();
     }
 }

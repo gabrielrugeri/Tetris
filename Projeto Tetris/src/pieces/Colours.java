@@ -11,7 +11,7 @@ package pieces;
 /**
  *  Esta classe contém a coloração para printar as peças no terminal.
  */
-public class Colors {
+public class Colours {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\033[48;5;0m";
     public static final String ANSI_RED = "\033[48;5;160m";

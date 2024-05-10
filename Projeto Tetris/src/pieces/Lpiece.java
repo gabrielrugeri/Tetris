@@ -16,26 +16,15 @@ public class Lpiece extends Piece {
     // Construtor
     public Lpiece() {
         super();
-        this.setColor(3);
+        this.setColor(Colours.ANSI_ORANGE);
         int[][] form= {{3,0},{3,0},{3,3}};
         this.setForm(form);
-        this.setRotation(0);
+        this.setWidth(this.getForm().length);
+        this.setHeight(this.getForm()[0].length);
     }
 
     @Override
     public void spawn() {
         this.setX(ThreadLocalRandom.current().nextInt(2, 8));
-        this.setY(0);
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder out = new StringBuilder();
-        for(int i=0; i<this.getForm().length;i++) {
-            for (int j = 0; j < this.getForm()[i].length; j++)
-                out.append(((this.getForm()[i][j] > 0) ? STR."\{Colors.ANSI_ORANGE}  \{Colors.ANSI_RESET}" : STR."\{Colors.ANSI_WHITE}  \{Colors.ANSI_RESET}"));
-            out.append("\n");
-        }
-        return out.toString();
     }
 }
