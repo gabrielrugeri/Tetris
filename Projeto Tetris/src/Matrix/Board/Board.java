@@ -15,12 +15,14 @@ import Matrix.Color;
 public class Board extends Matrix {
     private int score;
     private Piece fallingPiece;
+    private Color[][] landed;
 
     public Board(int height, int width) {
         super(height, width);
+        this.landed = new Color[height][width];
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                form[i][j] = Color.WHITE;
+                form[i][j] = landed[i][j] = Color.WHITE;
             }
         }
         this.score = 0;
@@ -48,7 +50,7 @@ public class Board extends Matrix {
     }
 
     /*
-     * Pinta o board de acordo com a posicao da peca
+     * Pinta o board de acordo com a posicao da peca.
      */
     public void update() {
         int x = fallingPiece.getX();
@@ -57,7 +59,12 @@ public class Board extends Matrix {
         int n = fallingPiece.getWidth();
         for (int i = y; i < y + m; i++) {
             for (int j = x; j < x + n; j++) {
-                form[i][j] = fallingPiece.getForm()[i - y][j - x];
+
+                // Eh importante nao pintar uma celula BRANCA da peca sobre o board
+                // Uma celula BRANCA da peca deve ser considerada "transparente"
+                if (fallingPiece.getForm()[i - y][j - x] != Color.WHITE) {
+                    form[i][j] = fallingPiece.getForm()[i - y][j - x];
+                }
             }
         }
     }
@@ -75,6 +82,14 @@ public class Board extends Matrix {
             for (int j = x; j < x + n; j++) {
                 form[i][j] = Color.WHITE;
             }
+        }
+    }
+    /*
+     * Copia matriz-base para matriz landed
+     */
+    public void updateLanded() {
+        for (int i = 0; i < height; i++) {
+            System.arraycopy(form[i], 0, landed[i], 0, width);
         }
     }
 }
