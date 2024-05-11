@@ -7,9 +7,7 @@
  */
 
 package Matrix.Pieces;
-import java.util.concurrent.ThreadLocalRandom;
 import Matrix.Color;
-
 
 /**
  *  Esta classe é referente à peça J. Contém seu construtor e métodos para a implementação.
@@ -17,17 +15,10 @@ import Matrix.Color;
 public class Jpiece extends Piece {
     //Construtor
     public Jpiece() {
-        super();
+        super(3, 2, 2, 7);
         Color B = Color.BLUE;
         Color W = Color.WHITE;
         Color[][] form = {{W, B}, {W, B}, {B, B}};
         this.setForm(form);
-        this.setRotation(0);
-    }
-
-    @Override
-    public void spawn() {
-        this.setX(ThreadLocalRandom.current().nextInt(2, 7));
-        this.setY(0);
     }
 }

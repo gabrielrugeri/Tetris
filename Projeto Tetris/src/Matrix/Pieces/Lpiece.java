@@ -6,7 +6,6 @@
  * Material utilizado para o Projeto Prático 01 [Tetris] aula de MC322 - Programação Orientada a Objetos
  */
 package Matrix.Pieces;
-import java.util.concurrent.ThreadLocalRandom;
 import Matrix.Color;
 
 /**
@@ -15,17 +14,10 @@ import Matrix.Color;
 public class Lpiece extends Piece {
     // Construtor
     public Lpiece() {
-        super();
+        super(3, 2, 2, 8);
         Color O = Color.ORANGE;
         Color W = Color.WHITE;
-        Color[][] form = {{O ,W}, {O, W}, {O, O}};
+        Color[][] form = {{O, W}, {O, W}, {O, O}};
         this.setForm(form);
-        this.setRotation(0);
-    }
-
-    @Override
-    public void spawn() {
-        this.setX(ThreadLocalRandom.current().nextInt(2, 8));
-        this.setY(0);
     }
 }

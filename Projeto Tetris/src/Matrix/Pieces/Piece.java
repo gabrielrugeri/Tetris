@@ -21,6 +21,13 @@ public abstract class Piece extends Matrix {
     protected int rotation;  // marca se a peça sofre rotação.
 
 
+    public Piece(int height, int width, int origin, int bound) {
+        super(height, width);
+        this.spawn(origin, bound); // define x inicial randomico
+        this.y = 0;
+        this.rotation = 0;
+    }
+
     public int getX() {
         return x;
     }
@@ -45,10 +52,14 @@ public abstract class Piece extends Matrix {
         this.width = width;
     }
 
+    public void setRotation(int rotation) {
+        this.rotation = (this.rotation + rotation) % 4;
+    }
+
     public void setX(int x) {
         this.x = x;
     }
-
+    
     public void setY(int y) {
         this.y = y;
     }
@@ -81,63 +92,55 @@ public abstract class Piece extends Matrix {
         this.addX(1);
     }
 
-    public void setRotation(int rotation) {
-        this.rotation = (this.rotation + rotation) % 4;
-    }
 
     /**
-     * A função é responsável por setar a peça no tabuleiro.
-     */
-    @Override
-    public abstract void spawn();
+     * Define x inicial da peca.
+     * Chamada no construtor.
+     */ 
+    public void spawn(int origin, int bound) {
+        x = ThreadLocalRandom.current().nextInt(origin, bound);
+    }
 
     /*
-     * CONSIDERAR A SEGUINTE IMPLEMENTACAO:
+     * Inverte os dados de linhas e coluna da matriz-peca.
+     * Usado na rotacao.
      */
-    // public void spawn(int origin, int bound) {
-    //     x = ThreadLocalRandom.current().nextInt(origin, bound);
-    //     y = 0;
-    // }
+    private void switchHeightWidth() {
+        int aux = height;
+        height = width;
+        width = aux;
+    }
 
 
     /**
      * A função rotaciona a peça para a esquerda.
      *
-     *  @return rotatedForm Colors[][]
      */
-    public Color[][] rotateClockWise(){
-        int aux;
+    public void rotateClockWise(){
         Color[][] rotatedForm = new Color[height][width];
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 rotatedForm[i][j] = form[width - j - 1][i];
             }
         }
-        aux = height;
-        height = width;
-        width = aux;
         this.setRotation(1);
-        return rotatedForm;
+        this.setForm(rotatedForm);
+        this.switchHeightWidth();
     }
 
     /**
      * A função rotaciona a peça para a direita.
      *
-     * @return rotatedForm Colors[][]
      */
-    public Color[][] rotateCounterClockWise(){
-        int aux;
+    public void rotateCounterClockWise(){
         Color[][] rotatedForm = new Color[height][width];
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 rotatedForm[i][j] = form[j][height - i - 1];
             }
         }
-        aux = height;
-        height = width;
-        width = aux;
         this.setRotation(-1);
-        return rotatedForm;
+        this.setForm(rotatedForm);
+        this.switchHeightWidth();
     }
-
 }

@@ -1,3 +1,12 @@
+/*
+ * Matrix.java
+ * 
+ *
+ * Ultima modificação: 10/05/2024
+ *
+ * Material utilizado para o Projeto Pratico 01 [Tetris] aula de MC322 - Programacao Orientada a Objetos
+ */
+
 package Matrix;
 
 public abstract class Matrix {
@@ -5,6 +14,12 @@ public abstract class Matrix {
     protected int height;
     protected int width;
 
+
+    public Matrix(int height, int width) {
+        this.height = height;
+        this.width = width;
+        this.form = new Color[height][width];
+    }
 
     public Color[][] getForm() {
         return form;
