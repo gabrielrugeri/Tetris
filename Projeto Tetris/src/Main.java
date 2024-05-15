@@ -4,9 +4,10 @@ import Matrix.Pieces.*;
 public class Main {
     public static void main(String[] args) {
         Board B = new Board(20,10);
-        PieceMovements(B);
         
-        //Engine.run(B);
+        //PieceMovements(B);
+        
+        Engine.run(B);
     }
     
     /**

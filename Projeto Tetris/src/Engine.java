@@ -211,7 +211,7 @@ public class Engine {
                 break;
             }*/
 
-            //Piece Side Movement
+            //Piece Side and rotation Movement
             // (#WIP) Needs Sniffer for User Input, only available when using Graphics
 
             //Piece Movement
