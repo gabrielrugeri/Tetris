@@ -88,6 +88,7 @@ public class Board extends Matrix {
             }
         }
     }
+
     /*
      * Copia matriz-base para matriz landed
      */
@@ -97,11 +98,12 @@ public class Board extends Matrix {
         }
     }
 
+    /*
+     * Apaga a linha completa.
+     */
     public void deleteLine(int y) {
         for (int j = y; j > 0; j--) {
-            for (int x = 0; x < width; x++) {
-                landed[y][x] = landed[y-1][x];
-            }
+            if (width >= 0) System.arraycopy(landed[j - 1], 0, landed[j], 0, width);
         }
         for (int x = 0; x < width; x++) {
             landed[0][x] = Color.WHITE;

@@ -135,6 +135,7 @@ public abstract class Piece extends Matrix {
      *
      */
     public void rotateCounterClockWise(){
+        this.switchHeightWidth();
         Color[][] rotatedForm = new Color[height][width];
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
@@ -143,6 +144,5 @@ public abstract class Piece extends Matrix {
         }
         this.setRotation(-1);
         this.setForm(rotatedForm);
-        this.switchHeightWidth();
     }
 }

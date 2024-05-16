@@ -36,7 +36,7 @@ public class Engine {
                 //If there are a piece part on the cell, checks for overflown
                 if (P.getForm()[y - piece_y][x - piece_x] != Color.WHITE) {
                     //Piece overflowed the board
-                    if (y - 1 < 0)
+                    if (y == 0)
                         return true;
                 }
             }
@@ -221,6 +221,7 @@ public class Engine {
                     B.updateLanded();
                     if (CheckCollisionOver(P, B)) {
                         clearScreen();
+                        B.update();
                         System.out.println(B);
                         break;
                     }
