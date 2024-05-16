@@ -58,6 +58,11 @@ public class Main {
         System.out.println(B);
         B.clear();
     }
+    /**
+     * This function creates three different pieces to turn the last line full. 
+     * It then deletes said line. 
+     * @param Board
+     */
     public static void deletefullline(Board B){
         System.out.println(B);
 
