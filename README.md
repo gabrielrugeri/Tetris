@@ -9,17 +9,17 @@ Sobre as funcionalidades do jogo
 
 Funções relacionadas à Peça:
 
-Movimentar a peça lateralmente no tabuleiro;
-Gerar a peça randomicamente na porção superior do tabuleiro;
-Rotacionar a peça;
-Funções relacionadas ao tabuleiro:
-Mostrar a peça no tabuleiro;
-Limpar a peça do tabuleiro; 
-Deletar uma linha preenchida por peças;
-Atualizar o tabuleiro o qual contém as peças que já caíram;
-Funções relacionadas à Engine:
-Checar as colisões de uma peça com as demais que estão no tabuleiro;
-Implementar a queda rápida de uma peça;
-Capturar os comandos do jogador;
-Implementar o sistema de pontuação;
-Implementar a função que roda o jogo, a qual deve gerar randomicamente o formato da peça e fazê-la cair, ao passo que verifica as colisões e o completar de uma linha; 
+	Movimentar a peça lateralmente no tabuleiro;
+	Gerar a peça randomicamente na porção superior do tabuleiro;
+	Rotacionar a peça;
+	Funções relacionadas ao tabuleiro:
+	Mostrar a peça no tabuleiro;
+	Limpar a peça do tabuleiro; 
+	Deletar uma linha preenchida por peças;
+	Atualizar o tabuleiro o qual contém as peças que já caíram;
+	Funções relacionadas à Engine:
+	Checar as colisões de uma peça com as demais que estão no tabuleiro;
+	Implementar a queda rápida de uma peça;
+	Capturar os comandos do jogador;
+	Implementar o sistema de pontuação;
+	Implementar a função que roda o jogo, a qual deve gerar randomicamente o formato da peça e fazê-la cair, ao passo que verifica as colisões e o completar de uma linha; 
