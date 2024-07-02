@@ -8,6 +8,7 @@
 
 package Matrix.Pieces;
 
+import Matrix.Board.Board;
 import Matrix.Color;
 import Matrix.Matrix;
 
@@ -118,9 +119,14 @@ public abstract class Piece extends Matrix {
      * A função rotaciona a peça para a esquerda.
      *
      */
-    public void rotateClockWise(){
+    public void rotateClockWise(Board B){
+        B.clear();
         this.switchHeightWidth();
         Color[][] rotatedForm = new Color[height][width];
+        //Check if out of bounds and move left
+        while (x + width > B.getWidth()) {
+            moveLeft();
+        }
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 rotatedForm[i][j] = form[width - j - 1][i];
