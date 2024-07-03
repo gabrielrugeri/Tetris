@@ -84,7 +84,8 @@ public class Board extends Matrix {
         int n = fallingPiece.getWidth();
         for (int i = y; i < y + m; i++) {
             for (int j = x; j < x + n; j++) {
-                form[i][j] = Color.WHITE;
+                if (this.getFallingPiece().getForm()[i - y][j - x] != Color.WHITE)
+                    form[i][j] = Color.WHITE;
             }
         }
     }
@@ -94,7 +95,13 @@ public class Board extends Matrix {
      */
     public void updateLanded() {
         for (int i = 0; i < height; i++) {
-            System.arraycopy(form[i], 0, landed[i], 0, width);
+            for (int j = 0; j < width; j++) {
+                if (form[i][j] != Color.WHITE) {
+                    Color Temp = form[i][j];
+                    landed[i][j] = Temp;
+                }
+            }
+            //System.arraycopy(form[i], 0, landed[i], 0, width);
         }
     }
 

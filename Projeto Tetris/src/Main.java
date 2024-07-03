@@ -3,17 +3,22 @@ import Matrix.Pieces.Ipiece;
 import Matrix.Pieces.Jpiece;
 import Matrix.Pieces.Piece;
 
+import java.awt.*;
+import java.io.IOException;
+
 public class Main {
-    public static void main(String[] args) {
-        Board B = new Board(20, 10);
-        System.out.println("This is checking movements of a piece on the board.");
+    public static void main(String[] args) throws IOException, FontFormatException {
+        int height = 20, width = 10;
+        Board B = new Board(height, width);
+        Window Game = new Window(B);
+        /*System.out.println("This is checking movements of a piece on the board.");
         PieceMovements(B);
         Engine.clearScreen();
         System.out.println("This is deleting a line full of pieces.");
         deletefullline(B);
         Engine.clearScreen();
-        System.out.println("This is simulating a functional run of the games without proper graphics");
-        Engine.run(B);
+        System.out.println("This is simulating a functional run of the games without proper graphics");*/
+        Engine.run(B, Game);
         Engine.clearScreen();
     }
     /**
@@ -43,7 +48,7 @@ public class Main {
         System.out.println(B);
         B.clear();
 
-        p.rotateClockWise();
+        p.rotateClockWise(B);
         B.update();
         System.out.println(B);
         B.clear();
@@ -77,7 +82,7 @@ public class Main {
         B.clear();
 
         //Rotacionar
-        I.rotateClockWise();
+        I.rotateClockWise(B);
         B.update();
         System.out.println(B);
         B.clear();
@@ -118,7 +123,7 @@ public class Main {
         B.clear();
 
         //Rotacionar
-        M.rotateClockWise();
+        M.rotateClockWise(B);
         B.update();
         System.out.println(B);
         B.clear();

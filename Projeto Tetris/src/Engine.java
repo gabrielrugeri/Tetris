@@ -8,7 +8,6 @@ import java.util.concurrent.ThreadLocalRandom;
  * Engine Class
  * Defines all the function to make the Tetris game work, including Collision Checking,
  * Row Completion Checks and the main Run function.
- * (#WIP) ADD SCORES
  */
 public class Engine {
     /**
@@ -129,6 +128,35 @@ public class Engine {
     }
 
     /**
+     * Checks if a Possible rotation will collide with another piece.
+     * @param P: Piece
+     * @param B : Board
+     * @return True if it will colide with another piece, False otherwise
+     */
+    public static boolean CheckRotation(Piece P, Board B) {
+        P.rotateClockWise(B);
+        int piece_height = P.getForm().length;
+        int piece_width = P.getForm()[0].length;
+        int piece_y = P.getY();
+        int piece_x = P.getX();
+        //Checks every cell of the form[][] of the piece
+        for (int y = piece_y; y < piece_y + piece_height; y++) {
+            for (int x = piece_x; x < piece_x + piece_width; x++) {
+                //If there are a piece part on the cell, checks for collision
+                if (P.getForm()[y - piece_y][x - piece_x] != Color.WHITE) {
+                    //Piece to piece collision
+                    if (B.getLanded()[y][x] != Color.WHITE) {
+                        P.rotateCounterClockWise();
+                        return true;
+                    }
+                }
+            }
+        }
+        P.rotateCounterClockWise();
+        return false;
+    }
+
+    /**
      * Checks if a row is completed with Tetrominoes
      * @param B: Board
      * @param y: Position of the row to check for completion
@@ -143,21 +171,62 @@ public class Engine {
     }
 
     /**
+     * Rotates a piece and updates the board.
+     * @param B: Board
+     */
+    public static void Rotate(Board B) {
+        if (!CheckRotation(B.getFallingPiece(), B)) {
+            B.clear();
+            B.getFallingPiece().rotateClockWise(B);
+            B.update();
+        }
+    }
+
+    /**
+     * Moves a piece right and updates it on the board.
+     * @param B: Board
+     * @param P: Piece
+     */
+    public static void MoveLeft(Board B, Piece P) {
+        if (!CheckCollisionLeft(P, B)) {
+            B.clear();
+            B.getFallingPiece().moveLeft();
+            B.update();
+        }
+    }
+
+    /**
+     * Moves a piece left and updates it on the board.
+     * @param B: Board
+     * @param P: Piece
+     */
+    public static void MoveRight(Board B, Piece P) {
+        if (!CheckCollisionRight(P, B)) {
+            B.clear();
+            B.getFallingPiece().moveRight();
+            B.update();
+        }
+    }
+
+    /**
      * Piece Drop Down functions, when used, immediately drops the piece to the lowest possible space
      * @param B: Board
      * @param P: Piece
      */
     public static void DropDown(Board B, Piece P) {
         while (!CheckCollisionUnder(P, B)) {
+            B.clear();
             P.addY(1);
+            B.update();
         }
+        B.addScore(4);
     }
 
     /**
      * Runs the game with the specified conditions
      * @param B: Board to run the game
      */
-    public static void run(Board B) {
+    public static void run(Board B, Window W) {
         //Tick counter
         double t = 0;
         //Delta Time, defines the Frame Rate: dt = 1000 ms / FPS
@@ -206,16 +275,9 @@ public class Engine {
                     B.setFallingPiece(P);
                 }
             }
-            //Overflown Check (Stoppage)
-            /*if (CheckCollisionOver(P, B)) {
-                break;
-            }*/
-
-            //Piece Side Movement
-            // (#WIP) Needs Sniffer for User Input, only available when using Graphics
 
             //Piece Movement
-            if (t % 1 == 0) {
+            if (t % 6 == 0) {
                 //If the piece collides with another, updates the landed matrix and clear piece
                 if (CheckCollisionUnder(P, B)) {
                     B.updateLanded();
@@ -226,6 +288,7 @@ public class Engine {
                         break;
                     }
                     B.clearPiece();
+                    B.addScore(4);
                 }
                 else {
                     B.clear();
@@ -237,12 +300,24 @@ public class Engine {
             //Print Statements
             clearScreen();
             System.out.println(B);
+            W.update_Widow(B);
 
             //Check if there are any row Deletions to be made
+            int count = 0;
             for (int i = 0; i < B.getHeight(); i++) {
-                if (CheckRowCompletion(B, i))
+                if (CheckRowCompletion(B, i)) {
                     B.deleteLine(i);
+                    count++;
+                }
             }
+            if (count == 1)
+                B.addScore(100);
+            else if(count == 2)
+                B.addScore(300);
+            else if (count == 3)
+                B.addScore(500);
+            else if (count == 4)
+                B.addScore(800);
 
 
             //Engine Runtime Organization
