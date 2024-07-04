@@ -8,7 +8,7 @@ import java.awt.*;
  * Defines a JButton that exits the game.
  */
 public class ExitButton extends JButton {
-
+    
     public ExitButton(JFrame W) {
         super();
         this.setIcon(new ImageIcon("src/Visuals/Block_Icons/ExitButton.png"));
