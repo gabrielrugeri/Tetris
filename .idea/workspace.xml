@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="659de08e-1290-47e0-a7ee-81fa7241e96e" name="Changes" comment="matrix updated + button">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projeto Tetris/src/Visuals/ExitButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/Projeto Tetris/src/Visuals/ExitButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projeto Tetris/TETRIS" beforeDir="false" afterPath="$PROJECT_DIR$/Projeto Tetris/TETRIS" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,10 +59,22 @@
       <updated>1714846358498</updated>
       <workItem from="1714846359734" duration="88000" />
       <workItem from="1720102035447" duration="95000" />
+      <workItem from="1720223287764" duration="47000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
