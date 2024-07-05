@@ -8,8 +8,7 @@
 
 ***Sobre as funcionalidades do jogo***
 
->Por se tratar de um jogo, o componente visual é imprescindível para que seja demonstrado o funcionamento dele, mesmo que de uma versão inicial. Mesmo com a orientação de que interfaces gráficas seriam implementadas na parte 2 do projeto, o grupo julgou que para apresentar uma evolução satisfatória nesse primeiro momento a parte gráfica seria necessária. Contudo, na parte 1 não será implementada a interação com o usuário — portanto não será possível jogar Tetris —, de forma que isso ficará para a Parte 2, bem como melhorias na interface gráfica e em alguns recursos do jogo.
-Dessa forma, nesse primeiro momento, levantou-se as principais funções que nosso sistema deve conter, já separando por escopo ao qual deve pertencer. 
+>Com a implementação da interface gráfica, podemos transformar o jogo em algo funcional. Nesse sentido, houveram atualização no código referente a algumas funcionalidades. Por fim, levantou-se todas as funções responsáveis por fazer o jogo funcionar.
 
 ***Funções relacionadas à Peça***
 
@@ -33,7 +32,13 @@ Dessa forma, nesse primeiro momento, levantou-se as principais funções que nos
 
 ***Funções relacionadas à Engine***
 
->Checar as colisões de uma peça com as demais que estão no tabuleiro;
+>Checar as colisões de uma peça com as demais que estão no tabuleiro nas diferentes direções;
+
+>Checar a possibilidade de  rotação da peça;
+
+>Verificar a completude de uma fileira;
+
+>Implementar a rotação e movimentação das peças;
 
 >Implementar a queda rápida de uma peça;
 
@@ -43,3 +48,36 @@ Dessa forma, nesse primeiro momento, levantou-se as principais funções que nos
 
 >Implementar a função que roda o jogo, a qual deve gerar randomicamente o formato da peça e fazê-la cair, ao passo que verifica as colisões e o completar de uma linha; 
 
+***Funções relacionadas à Windwow***
+
+>Construir a janela do jogo, a partir da criação do painel, da aba de pontuação, do botão de saída. Por fim, inicializa a janela. Define também as teclas responsáveis pela movimentação dos blocos no tabuleiro;
+
+>Atualizar as partes do tabuleiro do jogo;
+
+>Salvar em arquivo texto a evolução do jogo;
+
+***Funções relacionadas ao Bloco***
+
+>Construção visual do bloco, a partir do enum de cores;
+
+>Acessar o bloco;
+
+>Atualizar a cor do bloco para a desejada;
+
+***Funções relacionadas ao Botão de Saída***
+
+>Construção do botão de saída com a imagem e tamanho desejado;
+
+>Estabelecer sua funcionalidade, fechar a janela do jogo;
+
+***Funções relacionadas à Pontuação**
+
+>Construção do painel de pontuação, estabelecendo a fonte do texto, tamanho, fundo e borda;
+
+>Atualiza a pontuação a ser mostrada a partir da transformação da variável inteiro no tabuleiro em string;
+
+***Funções relacionadas ao Painel de Fundo**
+
+>Estabelece a imagem de fundo do painel do jogo;
+
+>Posiciona a imagem de fundo;
