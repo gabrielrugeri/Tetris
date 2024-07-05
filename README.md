@@ -70,13 +70,13 @@
 
 >Estabelecer sua funcionalidade, fechar a janela do jogo;
 
-***Funções relacionadas à Pontuação**
+***Funções relacionadas à Pontuação***
 
 >Construção do painel de pontuação, estabelecendo a fonte do texto, tamanho, fundo e borda;
 
 >Atualiza a pontuação a ser mostrada a partir da transformação da variável inteiro no tabuleiro em string;
 
-***Funções relacionadas ao Painel de Fundo**
+***Funções relacionadas ao Painel de Fundo***
 
 >Estabelece a imagem de fundo do painel do jogo;
 
